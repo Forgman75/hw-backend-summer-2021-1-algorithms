@@ -13,14 +13,9 @@ def find_shortest_longest_word(text: str) -> tuple[Optional[str], Optional[str]]
     import re
     if re.search(r'[a-zA-Zа-яА-Я]+', text):
         list_str = text.split()
-        arr_lens = list(map(len, list_str))
-        maxim_len = max(arr_lens)
-        minim_len = min(arr_lens)
-        for word in list_str:
-            if len(word) == maxim_len:
-                max_word = word
-            elif len(word) == minim_len:
-                min_word = word
+        max_word = max(list_str, key=len)
+        min_word = min(list_str, key=len)
+    
         return (min_word, max_word)
     else:
         return (None, None)
